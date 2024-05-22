@@ -1,0 +1,31 @@
+<div id="tabela">
+    <h2>Gastos</h2>
+      <table border="1px">
+        <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Data</th>
+          <th>Valor</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let gasto of gastos | slice: (page-1) * pageSize : page * pageSize">
+          <td>{{gasto.nome}}</td>
+          <td>{{gasto.tipo}}</td>
+          <td>{{gasto.data}}</td>
+          <td>R${{gasto.valor}}</td>
+          <td><button type="button" class="btn-sm btn-danger"
+          (click)="excluir(gasto.id)"> Excluir</button></td>
+          <td><app-alterar-gastos-modal [idGastos]=gasto.id [idUsuario]=idUser></app-alterar-gastos-modal></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-inserir-gastos-modal [idUsuario]=idUser></app-inserir-gastos-modal>
+    <ngb-pagination
+    [(page)]="page"
+    [pageSize]="4"
+    [collectionSize]="gastos.length"></ngb-pagination>
+    <td><button type="button" class="btn-sm btn-secondary"
+      (click)="exportar()"> Exportar</button></td>

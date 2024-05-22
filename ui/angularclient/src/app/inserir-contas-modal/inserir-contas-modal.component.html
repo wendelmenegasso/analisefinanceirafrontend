@@ -1,0 +1,81 @@
+<button class="btn btn-sm btn-outline-primary" (click)="openPopup()">Criar Conta</button>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Inserir Conta</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="agencia">Agência</label>
+          <input type="text" [(ngModel)]="contas.agencia"
+                 class="form-control"
+                 id="agencia"
+                 name="agencia"
+                 placeholder="0000000"
+                 required #name="ngModel">
+          <label for="conta">Conta</label>
+          <input type="text" [(ngModel)]="contas.conta"
+                 class="form-control"
+                 id="conta"
+                 name="conta"
+                 placeholder="0000000"
+                 required #email="ngModel">
+          <label for="tipo">Tipo</label>
+          <select class="form-control" id="tipo" name="tipo" [(ngModel)]="contas.tipo">
+            <option
+                    class="form-control">Conta Poupança</option>
+            <option
+                    class="form-control">Conta Salário</option>
+            <option
+                    class="form-control">Conta Corrente</option>
+            <option
+                    class="form-control">Conta Empresa</option>
+          </select>
+        <label for="banco">Banco</label>
+              <select class="form-control" id="banco" name="banco" [(ngModel)]="contas.banco">
+                <option
+                        class="form-control">Banco do Brasil</option>
+                <option
+                        class="form-control">Bradesco</option>
+                <option
+                        class="form-control">C6</option>
+                <option
+                        class="form-control">Caixa Econômica Federal</option>
+                <option
+                        class="form-control">Itaú</option>
+                <option
+                        class="form-control">Nubank</option>
+                <option
+                        class="form-control">Pan</option>
+                <option
+                        class="form-control">Santander</option>
+                <option
+                        class="form-control">Outros</option>
+              </select>
+        <label for="saldo">Saldo</label>
+        <input type="text" [(ngModel)]="contas.saldo"
+               class="form-control"
+               id="saldo"
+               name="saldo"
+               placeholder="R$1.000,00"
+               required #name="ngModel">
+        <button type="submit" (click)="onSubmit()"
+                class="btn-sm btn-info">Salvar
+        </button>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-sm btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
